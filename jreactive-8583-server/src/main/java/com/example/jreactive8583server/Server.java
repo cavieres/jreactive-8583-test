@@ -9,6 +9,7 @@ import com.github.kpavlov.jreactive8583.IsoMessageListener;
 import com.github.kpavlov.jreactive8583.server.Iso8583Server;
 import com.github.kpavlov.jreactive8583.server.ServerConfiguration;
 import com.solab.iso8583.IsoMessage;
+import com.solab.iso8583.IsoType;
 import com.solab.iso8583.MessageFactory;
 import com.solab.iso8583.parse.ConfigParser;
 
@@ -49,6 +50,23 @@ private Iso8583Server<IsoMessage> server;
             }
         });
 		
+		server.addMessageListener(new IsoMessageListener<IsoMessage>() {
+
+            @Override
+            public boolean applies(IsoMessage isoMessage) {
+                return isoMessage.getType() == 0x200;
+            }
+
+            @Override
+            public boolean onMessage(ChannelHandlerContext ctx, IsoMessage isoMessage) {
+            	System.out.println("Server onMessage event II.");
+                final IsoMessage response = server.getIsoMessageFactory().createResponse(isoMessage);
+                response.setField(39, IsoType.ALPHA.value("00", 2));
+                response.setField(60, IsoType.LLLVAR.value("XXX", 3));
+                ctx.writeAndFlush(response);
+                return true;
+            }
+        });
 		
 		configureServer(server);
         server.init();

@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
+import com.github.kpavlov.jreactive8583.IsoMessageListener;
 import com.github.kpavlov.jreactive8583.client.ClientConfiguration;
 import com.github.kpavlov.jreactive8583.client.Iso8583Client;
 import com.solab.iso8583.IsoMessage;
@@ -13,8 +16,12 @@ import com.solab.iso8583.MessageFactory;
 import com.solab.iso8583.impl.SimpleTraceGenerator;
 import com.solab.iso8583.parse.ConfigParser;
 
+import io.netty.channel.ChannelHandlerContext;
+
 public class Client {
 	private Iso8583Client<IsoMessage> client;
+	
+	private final Map<Integer, IsoMessage> receivedMessages = new ConcurrentHashMap<>();
 	
 	public void start() throws Exception {
 		String host = "127.0.0.1";
@@ -31,6 +38,24 @@ public class Client {
 		
 		//MessageFactory<IsoMessage> messageFactory = ConfigParser.createDefault();
 		client = new Iso8583Client<>(socketAddress, configuration, clientMessageFactory());
+		
+		client.addMessageListener(new IsoMessageListener<IsoMessage>() {
+            @Override
+            public boolean applies(IsoMessage isoMessage) {
+                return true;
+            }
+
+            @Override
+            public boolean onMessage(ChannelHandlerContext ctx, IsoMessage isoMessage) {
+            	System.out.println("Client onMessage event.");
+                if (isoMessage.hasField(11)) {
+                    final Integer stan = Integer.valueOf(isoMessage.getObjectValue(11));
+                    receivedMessages.put(stan, isoMessage);
+                    return true;
+                }
+                return false;
+            }
+        });
 		
 		configureClient(client);
         client.init();
@@ -61,6 +86,7 @@ public class Client {
 		// given
         final IsoMessage finMessage = client.getIsoMessageFactory().newMessage(0x0200);
         finMessage.setField(60, IsoType.LLLVAR.value("foo", 3));
+        finMessage.setField(4, IsoType.NUMERIC.value(153456, 12));
         final Integer stan = finMessage.getObjectValue(11);
         // when
         //client.sendAsync(finMessage);
