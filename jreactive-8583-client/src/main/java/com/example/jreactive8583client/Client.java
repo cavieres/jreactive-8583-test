@@ -26,6 +26,8 @@ public class Client {
 	public void start() throws Exception {
 		String host = "127.0.0.1";
 		Integer port = 9080;
+		//String host = "tgr-qa.multicaja.cl";
+		//Integer port = 7100;
 		int idleTimeout = 3;
 		
 		SocketAddress socketAddress = new InetSocketAddress(host, port);
@@ -84,9 +86,14 @@ public class Client {
 	
 	public void sendData() {
 		// given
-        final IsoMessage finMessage = client.getIsoMessageFactory().newMessage(0x0200);
-        finMessage.setField(60, IsoType.LLLVAR.value("foo", 3));
-        finMessage.setField(4, IsoType.NUMERIC.value(153456, 12));
+        final IsoMessage finMessage = client.getIsoMessageFactory().newMessage(0x0200); // 0x0200
+        
+        // finMessage.setField(60, IsoType.LLLVAR.value("foo", 3));
+        // finMessage.setField(4, IsoType.NUMERIC.value(153456, 12));
+        
+        finMessage.setField(3, IsoType.NUMERIC.value(500000, 6));
+        //finMessage.setField(4, IsoType.NUMERIC.value(000000000000, 12));
+        
         final Integer stan = finMessage.getObjectValue(11);
         // when
         //client.sendAsync(finMessage);

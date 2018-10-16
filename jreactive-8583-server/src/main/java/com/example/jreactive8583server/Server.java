@@ -54,7 +54,7 @@ private Iso8583Server<IsoMessage> server;
 
             @Override
             public boolean applies(IsoMessage isoMessage) {
-                return isoMessage.getType() == 0x200;
+                return isoMessage.getType() == 0x200; // 0x200
             }
 
             @Override

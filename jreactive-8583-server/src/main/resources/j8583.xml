@@ -2,6 +2,25 @@
 <!DOCTYPE j8583-config PUBLIC "-//J8583//DTD CONFIG 1.0//EN"
         "http://j8583.sourceforge.net/j8583.dtd">
 <j8583-config>
+	<!-- Sonda default buying #RA requests -->
+	<!-- 
+    <template type="1200">
+        <field num="3" type="NUMERIC" length="6">500000</field>
+        <field num="4" type="NUMERIC" length="12">000000000000</field>
+        <field num="11" type="NUMERIC" length="6">123456</field>
+        <field num="12" type="NUMERIC" length="12">181016164601</field>
+        <field num="22" type="ALPHA" length="12">021101020044</field>
+        <field num="24" type="NUMERIC" length="3">200</field>
+        <field num="26" type="NUMERIC" length="4">4789</field>
+        <field num="32" type="NUMERIC" length="8">61219000</field>
+        <field num="41" type="ALPHA" length="8">00000000</field>
+        <field num="42" type="ALPHA" length="15">123456789012345</field>
+        <field num="43" type="ALPHA" length="19">BOTON DE COMPRA WEB</field>
+        <field num="47" type="ALPHA" length="28">datos nacionales adicionales</field>
+        <field num="48" type="ALPHA" length="26">datos privados adicionales</field>
+        <field num="49" type="NUMERIC" length="3">152</field>
+    </template>
+     -->
 
     <!-- The client example uses this to create requests -->
     <template type="0200">
@@ -38,6 +57,25 @@
         <field num="70" type="NUMERIC" length="3">301</field>
     </template>
 
+	<!-- Sonda default buying #RA requests -->
+	<!-- 
+    <parse type="1200">
+        <field num="3" type="NUMERIC" length="6"/>
+        <field num="4" type="NUMERIC" length="12"/>
+        <field num="11" type="NUMERIC" length="6"/>
+        <field num="12" type="NUMERIC" length="12"/>
+        <field num="22" type="ALPHA" length="12"/>
+        <field num="24" type="NUMERIC" length="3"/>
+        <field num="26" type="NUMERIC" length="4"/>
+        <field num="32" type="NUMERIC" length="8"/>
+        <field num="41" type="ALPHA" length="8"/>
+        <field num="42" type="ALPHA" length="15"/>
+        <field num="43" type="ALPHA" length="19"/>
+        <field num="47" type="ALPHA" length="28"/>
+        <field num="48" type="ALPHA" length="26"/>
+        <field num="49" type="NUMERIC" length="3"/>
+    </parse>
+     -->
 
     <!-- The server example uses this to read the requests -->
     <parse type="0200">
