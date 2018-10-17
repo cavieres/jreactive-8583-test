@@ -15,6 +15,6 @@ public class Jreactive8583ClientApplication {
 		
 		client.sendData();
 		
-		client.stop();
+		//client.stop();
 	}
 }
