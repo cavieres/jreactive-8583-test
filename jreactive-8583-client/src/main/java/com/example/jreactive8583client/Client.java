@@ -86,7 +86,7 @@ public class Client {
 	
 	public void sendData() {
 		// given
-        final IsoMessage finMessage = client.getIsoMessageFactory().newMessage(0x0200); // 0x0200
+        final IsoMessage finMessage = client.getIsoMessageFactory().newMessage(0x1200); // 0x0200
         
         // finMessage.setField(60, IsoType.LLLVAR.value("foo", 3));
         // finMessage.setField(4, IsoType.NUMERIC.value(153456, 12));
