@@ -49,8 +49,12 @@ public class Client {
 
             @Override
             public boolean onMessage(ChannelHandlerContext ctx, IsoMessage isoMessage) {
+            	
             	System.out.println("Client onMessage event.");
-                if (isoMessage.hasField(11)) {
+                
+            	System.out.println(getHexaFromByteArray(isoMessage.writeData()));
+            	
+            	if (isoMessage.hasField(11)) {
                     final Integer stan = Integer.valueOf(isoMessage.getObjectValue(11));
                     receivedMessages.put(stan, isoMessage);
                     return true;
@@ -68,6 +72,17 @@ public class Client {
         } else {
         	System.out.println("Client not connected.");
         }
+	}
+	
+	private String getHexaFromByteArray(byte[] bytes) {
+		StringBuffer buffer = new StringBuffer();
+        
+        for(int i=0; i < bytes.length; i++){
+            buffer.append(Character.forDigit((bytes[i] >> 4) & 0xF, 16));
+            buffer.append(Character.forDigit((bytes[i] & 0xF), 16));
+        }
+        
+        return buffer.toString();
 	}
 	
 	private MessageFactory<IsoMessage> clientMessageFactory() throws IOException {
@@ -96,7 +111,7 @@ public class Client {
         
         final Integer stan = finMessage.getObjectValue(11);
         
-        System.out.println(finMessage.debugString());
+        //System.out.println(finMessage.debugString());
         
         // when
         //client.sendAsync(finMessage);

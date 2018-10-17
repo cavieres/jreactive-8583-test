@@ -41,11 +41,13 @@ private Iso8583Server<IsoMessage> server;
             @Override
             public boolean onMessage(ChannelHandlerContext ctx, IsoMessage isoMessage) {
             	System.out.println("Server onMessage event.");
+            	
                 if (isoMessage.hasField(11)) {
                     final Integer stan = Integer.valueOf(isoMessage.getObjectValue(11));
                     receivedMessages.put(stan, isoMessage);
                     return true;
                 }
+                
                 return true;
             }
         });
@@ -59,7 +61,11 @@ private Iso8583Server<IsoMessage> server;
 
             @Override
             public boolean onMessage(ChannelHandlerContext ctx, IsoMessage isoMessage) {
+            	
             	System.out.println("Server onMessage event II.");
+            	
+            	System.out.println(getHexaFromByteArray(isoMessage.writeData()));
+            	
                 final IsoMessage response = server.getIsoMessageFactory().createResponse(isoMessage);
                 response.setField(39, IsoType.ALPHA.value("00", 2));
                 response.setField(60, IsoType.LLLVAR.value("XXX", 3));
@@ -71,6 +77,17 @@ private Iso8583Server<IsoMessage> server;
 		configureServer(server);
         server.init();
         server.start();
+	}
+	
+	private String getHexaFromByteArray(byte[] bytes) {
+		StringBuffer buffer = new StringBuffer();
+        
+        for(int i=0; i < bytes.length; i++){
+            buffer.append(Character.forDigit((bytes[i] >> 4) & 0xF, 16));
+            buffer.append(Character.forDigit((bytes[i] & 0xF), 16));
+        }
+        
+        return buffer.toString();
 	}
 	
 	private MessageFactory<IsoMessage> serverMessageFactory() throws IOException {
