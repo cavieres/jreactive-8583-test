@@ -95,6 +95,9 @@ public class Client {
         //finMessage.setField(4, IsoType.NUMERIC.value(000000000000, 12));
         
         final Integer stan = finMessage.getObjectValue(11);
+        
+        System.out.println(finMessage.debugString());
+        
         // when
         //client.sendAsync(finMessage);
         try {
