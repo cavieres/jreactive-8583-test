@@ -49,7 +49,6 @@
 	<parse type="1200">
         <field num="3" type="NUMERIC" length="6"/>
         <field num="4" type="AMOUNT"/>
-        <field num="7" type="DATE10"/>
         <field num="11" type="NUMERIC" length="6"/>
         <field num="12" type="NUMERIC" length="12"/>
         <field num="22" type="ALPHA" length="12"/>
@@ -69,7 +68,6 @@
     <parse type="1210">
         <field num="3" type="NUMERIC" length="6"/>
         <field num="4" type="AMOUNT"/>
-        <field num="7" type="DATE10"/>
         <field num="11" type="NUMERIC" length="6"/>
         <field num="12" type="NUMERIC" length="12"/>
         <field num="22" type="ALPHA" length="12"/>

@@ -89,7 +89,7 @@ public class Client {
         final MessageFactory<IsoMessage> messageFactory = ConfigParser.createDefault();
         messageFactory.setCharacterEncoding(StandardCharsets.US_ASCII.name());
         messageFactory.setUseBinaryMessages(false);
-        messageFactory.setAssignDate(true);
+        messageFactory.setAssignDate(false);
         messageFactory.setTraceNumberGenerator(new SimpleTraceGenerator((int) (System
                 .currentTimeMillis() % 1000000)));
         return messageFactory;
