@@ -42,6 +42,8 @@ private Iso8583Server<IsoMessage> server;
             public boolean onMessage(ChannelHandlerContext ctx, IsoMessage isoMessage) {
             	System.out.println("Server onMessage event.");
             	
+            	System.out.println(getHexaFromByteArray(isoMessage.writeData()));
+            	
                 if (isoMessage.hasField(11)) {
                     final Integer stan = Integer.valueOf(isoMessage.getObjectValue(11));
                     receivedMessages.put(stan, isoMessage);

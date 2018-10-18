@@ -54,11 +54,14 @@ public class Client {
                 
             	System.out.println(getHexaFromByteArray(isoMessage.writeData()));
             	
+            	stop();
+            	
             	if (isoMessage.hasField(11)) {
                     final Integer stan = Integer.valueOf(isoMessage.getObjectValue(11));
                     receivedMessages.put(stan, isoMessage);
                     return true;
                 }
+            	
                 return false;
             }
         });
