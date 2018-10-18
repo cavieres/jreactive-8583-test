@@ -118,6 +118,10 @@ public class Client {
         
         // when
         //client.sendAsync(finMessage);
+        
+        System.out.println("Sending message:");
+    	System.out.println(getHexaFromByteArray(finMessage.writeData()));
+        
         try {
 			client.send(finMessage);
 		} catch (InterruptedException e) {

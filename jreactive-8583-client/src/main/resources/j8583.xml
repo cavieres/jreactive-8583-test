@@ -17,7 +17,7 @@
         <field num="41" type="ALPHA" length="8">00000000</field>
         <field num="42" type="ALPHA" length="15">123456789012345</field>
         <field num="43" type="ALPHA" length="19">BOTON DE COMPRA WEB</field>
-        <field num="47" type="ALPHA" length="28">datos nacionales adicionales</field>
+        <!-- <field num="47" type="ALPHA" length="28">datos nacionales adicionales</field> -->
         <field num="48" type="ALPHA" length="26">datos privados adicionales</field>
         <field num="49" type="NUMERIC" length="3">152</field>
     </template>
@@ -47,7 +47,7 @@
         <field num="41" type="ALPHA" length="8"/>
         <field num="42" type="ALPHA" length="15"/>
         <field num="43" type="ALPHA" length="19"/>
-        <field num="47" type="ALPHA" length="28"/>
+        <!-- <field num="47" type="ALPHA" length="28"/> -->
         <field num="48" type="ALPHA" length="26"/>
         <field num="49" type="NUMERIC" length="3"/>
     </parse>
@@ -67,7 +67,7 @@
         <field num="41" type="ALPHA" length="8"/>
         <field num="42" type="ALPHA" length="15"/>
         <field num="43" type="ALPHA" length="19"/>
-        <field num="47" type="ALPHA" length="28"/>
+        <!-- <field num="47" type="ALPHA" length="28"/> -->
         <field num="48" type="ALPHA" length="26"/>
         <field num="49" type="NUMERIC" length="3"/>
         <field num="60" type="LLLVAR"/>
