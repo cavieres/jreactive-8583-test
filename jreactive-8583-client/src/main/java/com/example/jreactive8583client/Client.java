@@ -24,10 +24,16 @@ public class Client {
 	private final Map<Integer, IsoMessage> receivedMessages = new ConcurrentHashMap<>();
 	
 	public void start() throws Exception {
+		// Localhost.
 		String host = "127.0.0.1";
 		Integer port = 9080;
+		// Conn. to Sonda (local).
 		//String host = "tgr-qa.multicaja.cl";
 		//Integer port = 7100;
+		// Conn. to Sonda (Azure).
+		//String host = "10.172.233.100";
+		//Integer port = 7100;
+		
 		int idleTimeout = 3;
 		
 		SocketAddress socketAddress = new InetSocketAddress(host, port);
@@ -71,9 +77,9 @@ public class Client {
         client.connect();
         
         if (client.isConnected()) {
-        	System.out.println("Client connected.");
+        	System.out.println(String.format("Client connected to %s:%s", host, port));
         } else {
-        	System.out.println("Client not connected.");
+        	System.out.println(String.format("Client not connected to %s:%s", host, port));
         }
 	}
 	
@@ -95,6 +101,8 @@ public class Client {
         messageFactory.setAssignDate(false);
         messageFactory.setTraceNumberGenerator(new SimpleTraceGenerator((int) (System
                 .currentTimeMillis() % 1000000)));
+        messageFactory.setUseBinaryBitmap(true);
+        messageFactory.setIsoHeader(0x1200, null);
         return messageFactory;
     }
 	

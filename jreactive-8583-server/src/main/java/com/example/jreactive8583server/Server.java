@@ -97,6 +97,8 @@ private Iso8583Server<IsoMessage> server;
         messageFactory.setCharacterEncoding(StandardCharsets.US_ASCII.name());
         messageFactory.setUseBinaryMessages(false);
         messageFactory.setAssignDate(true);
+        messageFactory.setUseBinaryBitmap(true);
+        messageFactory.setIsoHeader(0x1200, null);
         return messageFactory;
     }
 	
