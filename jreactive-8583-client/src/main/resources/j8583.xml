@@ -19,8 +19,7 @@
         <field num="43" type="ALPHA" length="26">24Simulador POS Switch HRF</field>
         <!-- <field num="47" type="ALPHA" length="28">datos nacionales adicionales</field> -->
         <field num="48" type="LLLVAR">
-        	<field num="0" type="ALPHA" length="3">079</field>
-	        <field num="1" type="BINARY" length="64">1100101110000001100100000000000000100000000000000000000000000000</field> <!-- l.16: CB81900020000000 -->
+	        <field num="1" type="ALPHA" length="16">CB81900020000000</field> <!-- l.16: CB81900020000000 -->
 	        <field num="2" type="ALPHA" length="5">00004</field>
 	        <field num="5" type="NUMERIC" length="16">1306433</field>
 	        <field num="7" type="NUMERIC" length="16">12060771</field>
@@ -61,8 +60,7 @@
         <field num="43" type="ALPHA" length="26"/>
         <!-- <field num="47" type="ALPHA" length="28"/> -->
         <field num="48" type="LLLVAR">
-			<field num="0" type="ALPHA" length="3"/>
-	        <field num="1" type="BINARY" length="64"/>
+	        <field num="1" type="ALPHA" length="16"/>
 	        <field num="2" type="ALPHA" length="5"/>
 	        <field num="5" type="NUMERIC" length="16"/>
 	        <field num="7" type="NUMERIC" length="16"/>
@@ -93,8 +91,7 @@
         <field num="43" type="ALPHA" length="26"/>
         <!-- <field num="47" type="ALPHA" length="28"/> -->
         <field num="48" type="LLLVAR">
-        	<field num="0" type="ALPHA" length="3"/>
-	        <field num="1" type="BINARY" length="64"/>
+	        <field num="1" type="ALPHA" length="16"/>
 	        <field num="2" type="ALPHA" length="5"/>
 	        <field num="5" type="NUMERIC" length="16"/>
 	        <field num="7" type="NUMERIC" length="16"/>

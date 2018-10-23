@@ -103,6 +103,8 @@ public class Client {
                 .currentTimeMillis() % 1000000)));
         messageFactory.setUseBinaryBitmap(true);
         messageFactory.setIsoHeader(0x1200, null);
+        messageFactory.setBinaryIsoHeader(0x1200, null);
+
         return messageFactory;
     }
 	
