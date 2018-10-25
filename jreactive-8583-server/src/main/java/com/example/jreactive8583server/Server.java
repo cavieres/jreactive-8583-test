@@ -95,7 +95,7 @@ private Iso8583Server<IsoMessage> server;
 	private MessageFactory<IsoMessage> serverMessageFactory() throws IOException {
         final MessageFactory<IsoMessage> messageFactory = ConfigParser.createDefault();
         messageFactory.setCharacterEncoding(StandardCharsets.US_ASCII.name());
-        messageFactory.setUseBinaryMessages(false);
+        messageFactory.setUseBinaryMessages(true);
         messageFactory.setAssignDate(true);
         messageFactory.setUseBinaryBitmap(true);
         messageFactory.setIsoHeader(0x1200, null);

@@ -97,7 +97,7 @@ public class Client {
 	private MessageFactory<IsoMessage> clientMessageFactory() throws IOException {
         final MessageFactory<IsoMessage> messageFactory = ConfigParser.createDefault();
         messageFactory.setCharacterEncoding(StandardCharsets.US_ASCII.name());
-        messageFactory.setUseBinaryMessages(false);
+        messageFactory.setUseBinaryMessages(true);
         messageFactory.setAssignDate(false);
         messageFactory.setTraceNumberGenerator(new SimpleTraceGenerator((int) (System
                 .currentTimeMillis() % 1000000)));
@@ -119,7 +119,7 @@ public class Client {
         // finMessage.setField(60, IsoType.LLLVAR.value("foo", 3));
         // finMessage.setField(4, IsoType.NUMERIC.value(153456, 12));
         
-        finMessage.setField(3, IsoType.NUMERIC.value(500000, 6));
+        //finMessage.setField(3, IsoType.NUMERIC.value(500000, 6));
         //finMessage.setField(4, IsoType.NUMERIC.value(000000000000, 12));
         
         final Integer stan = finMessage.getObjectValue(11);

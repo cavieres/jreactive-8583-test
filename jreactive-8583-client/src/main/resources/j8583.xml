@@ -6,31 +6,32 @@
 	<!-- Sonda default buying #RA requests -->
 	<!-- The client example uses this to create requests -->
 	<template type="1200">
-        <field num="3" type="NUMERIC" length="6">500000</field>
-        <field num="4" type="NUMERIC" length="12">000000000000</field>
-        <field num="11" type="NUMERIC" length="6">123456</field>
-        <field num="12" type="NUMERIC" length="12">110713111732</field>
+        <field num="3" type="ALPHA" length="6">500000</field>
+        <field num="4" type="ALPHA" length="12">000000000000</field>
+        <!-- <field num="11" type="ALPHA" length="6"></field> -->
+        <field num="12" type="ALPHA" length="12">110713111732</field>
         <field num="22" type="ALPHA" length="12">021101020044</field>
-        <field num="24" type="NUMERIC" length="3">200</field>
-        <field num="26" type="NUMERIC" length="4">4789</field>
-        <field num="32" type="NUMERIC" length="10">0861219000</field>
+        <field num="24" type="ALPHA" length="3">200</field>
+        <field num="26" type="ALPHA" length="4">4789</field>
+        <field num="32" type="ALPHA" length="10">0861219000</field>
         <field num="41" type="ALPHA" length="8">0</field>
         <field num="42" type="ALPHA" length="15">13</field>
         <field num="43" type="ALPHA" length="26">24Simulador POS Switch HRF</field>
         <!-- <field num="47" type="ALPHA" length="28">datos nacionales adicionales</field> -->
-        <field num="48" type="LLLVAR">
-	        <field num="1" type="ALPHA" length="16">CB81900020000000</field> <!-- l.16: CB81900020000000 -->
+        <field num="48" type="BINARY" length="64">
+        	<field num="0" type="ALPHA" length="3">079</field>
+	        <field num="1" type="BINARY" length="8">CB81900020000000</field> <!-- l.16: CB81900020000000 -->
 	        <field num="2" type="ALPHA" length="5">00004</field>
-	        <field num="5" type="NUMERIC" length="16">1306433</field>
-	        <field num="7" type="NUMERIC" length="16">12060771</field>
+	        <field num="5" type="BINARY" length="8">000000000013EF41</field>
+	        <field num="7" type="BINARY" length="8">0000000000B80863</field>
 	        <field num="8" type="NUMERIC" length="14">20110713113709</field>
-	        <field num="9" type="NUMERIC" length="16">100663305</field>
+	        <field num="9" type="BINARY" length="8">0000000006000009</field>
 	        <field num="16" type="NUMERIC" length="2">01</field>
 	        <field num="17" type="ALPHA" length="24">123456</field>
-	        <field num="20" type="NUMERIC" length="16">1100</field>
+	        <field num="20" type="BINARY" length="8">000000000000044C</field>
 	        <field num="35" type="NUMERIC" length="4">0065</field>
         </field>
-        <field num="49" type="NUMERIC" length="3">152</field>
+        <field num="49" type="ALPHA" length="3">152</field>
     </template>
 
     <!-- The server example uses this to create the responses
@@ -47,7 +48,7 @@
 	<!-- Sonda default buying #RA requests -->
 	<!-- The server example uses this to read the requests -->
 	<parse type="1200">
-        <field num="3" type="NUMERIC" length="6"/>
+        <field num="3" type="ALPHA" length="6"/>
         <field num="4" type="NUMERIC" length="12"/>
         <field num="11" type="NUMERIC" length="6"/>
         <field num="12" type="NUMERIC" length="12"/>
@@ -77,7 +78,7 @@
 	<!-- Sonda default buying #RA responses -->
     <!-- The client example uses this to read the responses -->
     <parse type="1210">
-        <field num="3" type="NUMERIC" length="6"/>
+        <field num="3" type="ALPHA" length="6"/>
         <field num="4" type="NUMERIC" length="12"/>
         <field num="11" type="NUMERIC" length="6"/>
         <field num="12" type="NUMERIC" length="12"/>
