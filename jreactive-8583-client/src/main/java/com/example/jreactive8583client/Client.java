@@ -7,6 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.github.kpavlov.jreactive8583.ConnectorConfigurer;
 import com.github.kpavlov.jreactive8583.IsoMessageListener;
 import com.github.kpavlov.jreactive8583.client.ClientConfiguration;
 import com.github.kpavlov.jreactive8583.client.Iso8583Client;
@@ -16,6 +17,7 @@ import com.solab.iso8583.MessageFactory;
 import com.solab.iso8583.impl.SimpleTraceGenerator;
 import com.solab.iso8583.parse.ConfigParser;
 
+import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelHandlerContext;
 
 public class Client {
@@ -25,11 +27,11 @@ public class Client {
 	
 	public void start() throws Exception {
 		// Localhost.
-		String host = "127.0.0.1";
-		Integer port = 9080;
+		//String host = "127.0.0.1";
+		//Integer port = 9080;
 		// Conn. to Sonda (local).
-		//String host = "tgr-qa.multicaja.cl";
-		//Integer port = 7100;
+		String host = "tgr-qa.multicaja.cl";
+		Integer port = 7100;
 		// Conn. to Sonda (Azure).
 		//String host = "10.172.233.100";
 		//Integer port = 7100;
@@ -46,7 +48,7 @@ public class Client {
 		
 		//MessageFactory<IsoMessage> messageFactory = ConfigParser.createDefault();
 		client = new Iso8583Client<>(socketAddress, configuration, clientMessageFactory());
-		
+				
 		client.addMessageListener(new IsoMessageListener<IsoMessage>() {
             @Override
             public boolean applies(IsoMessage isoMessage) {
@@ -99,12 +101,12 @@ public class Client {
         messageFactory.setCharacterEncoding(StandardCharsets.US_ASCII.name());
         messageFactory.setUseBinaryMessages(true);
         messageFactory.setAssignDate(false);
-        messageFactory.setTraceNumberGenerator(new SimpleTraceGenerator((int) (System
-                .currentTimeMillis() % 1000000)));
+        //messageFactory.setTraceNumberGenerator(new SimpleTraceGenerator((int) (System
+        //        .currentTimeMillis() % 1000000)));
         messageFactory.setUseBinaryBitmap(true);
-        messageFactory.setIsoHeader(0x1200, null);
-        messageFactory.setBinaryIsoHeader(0x1200, null);
-
+        //messageFactory.setIsoHeader(0x1200, null);
+        //messageFactory.setBinaryIsoHeader(0x1200, null);
+        
         return messageFactory;
     }
 	
@@ -122,12 +124,19 @@ public class Client {
         //finMessage.setField(3, IsoType.NUMERIC.value(500000, 6));
         //finMessage.setField(4, IsoType.NUMERIC.value(000000000000, 12));
         
-        final Integer stan = finMessage.getObjectValue(11);
+        //final Integer stan = finMessage.getObjectValue(11);
         
         //System.out.println(finMessage.debugString());
         
         // when
         //client.sendAsync(finMessage);
+        
+        // TODO: sobrecargar metodo y probar.
+        //finMessage.setBinary(false);
+        finMessage.setBinaryMti(false);
+//        
+//        finMessage.writeData();
+//        finMessage.write(finMessage.writeData(), 0);
         
         System.out.println("Sending message:");
     	System.out.println(getHexaFromByteArray(finMessage.writeData()));

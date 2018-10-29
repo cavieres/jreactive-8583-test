@@ -8,7 +8,7 @@
 	<template type="1200">
         <field num="3" type="ALPHA" length="6">500000</field>
         <field num="4" type="ALPHA" length="12">000000000000</field>
-        <!-- <field num="11" type="ALPHA" length="6"></field> -->
+        <field num="11" type="ALPHA" length="6">000000</field>
         <field num="12" type="ALPHA" length="12">110713111732</field>
         <field num="22" type="ALPHA" length="12">021101020044</field>
         <field num="24" type="ALPHA" length="3">200</field>
@@ -26,7 +26,7 @@
 	        <field num="7" type="BINARY" length="8">0000000000B80863</field>
 	        <field num="8" type="NUMERIC" length="14">20110713113709</field>
 	        <field num="9" type="BINARY" length="8">0000000006000009</field>
-	        <field num="16" type="NUMERIC" length="2">01</field>
+	        <field num="16" type="NUMERIC" length="2">97</field>
 	        <field num="17" type="ALPHA" length="24">123456</field>
 	        <field num="20" type="BINARY" length="8">000000000000044C</field>
 	        <field num="35" type="NUMERIC" length="4">0065</field>

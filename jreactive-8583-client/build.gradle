@@ -20,6 +20,7 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+	mavenLocal()
 	mavenCentral()
 }
 
@@ -28,8 +29,10 @@ dependencies {
 	implementation('org.springframework.boot:spring-boot-starter')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	
-	compile group: 'net.sf.j8583', name: 'j8583', version: '1.12.0'
+	//compile group: 'net.sf.j8583', name: 'j8583', version: '1.12.0'
     compile group: 'io.netty', name: 'netty-all', version: '4.1.30.Final'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'cl.multicaja', name: 'cl.multicaja.j8583', version: '1.0.0'
     compile files('libs/netty-iso8583-0.2.2-SNAPSHOT.jar')
+
 }
